@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Ui.ReadWriteActivity">
+
+    <EditText
+        android:id="@+id/edtWriteQuestions"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/editText_writeQuestions_height"
+        android:hint="Write Questions"
+        android:textSize="@dimen/edittext_text_size"
+        android:paddingLeft="@dimen/hint_padding"
+        android:background="@drawable/custom_edittext"
+        android:layout_marginTop="@dimen/editText_margin"
+        android:layout_marginStart="@dimen/editText_margin"
+        android:layout_marginEnd="@dimen/editText_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnWriteQuestions"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="@dimen/editText_margin"
+        android:layout_marginTop="@dimen/editText_margin"
+        android:layout_marginEnd="@dimen/editText_margin"
+        android:background="@drawable/custom_buttom"
+        android:text="Write"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize"
+        app:layout_constraintTop_toBottomOf="@id/edtWriteQuestions"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnReadQuestions"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="@dimen/editText_margin"
+        android:layout_marginTop="@dimen/editText_margin"
+        android:layout_marginEnd="@dimen/editText_margin"
+        android:background="@drawable/custom_buttom"
+        android:text="Read Question"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnWriteQuestions" />
+
+    <TextView
+        android:id="@+id/txtViewQuestions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="@dimen/textSize"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="@dimen/editText_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnReadQuestions" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

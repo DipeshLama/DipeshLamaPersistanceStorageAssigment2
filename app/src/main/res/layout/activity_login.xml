@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_gradient_background"
+    tools:context=".Ui.LoginActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_marginStart="@dimen/cardView_margin_left_top_right"
+        android:layout_marginEnd="@dimen/cardView_margin_left_top_right"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:paddingTop="30dp">
+
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ekbana" />
+
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/editText_height"
+                android:layout_marginStart="@dimen/editText_margin"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="@dimen/editText_margin"
+                android:background="@drawable/custom_edittext"
+                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:drawableTint="@color/custom_blue"
+                android:hint="Email Address"
+                android:paddingLeft="@dimen/hint_padding"
+                android:textSize="@dimen/edittext_text_size" />
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/editText_height"
+                android:layout_marginStart="@dimen/editText_margin"
+                android:layout_marginTop="@dimen/editText_margin"
+                android:layout_marginEnd="@dimen/editText_margin"
+                android:background="@drawable/custom_edittext"
+                android:drawableLeft="@drawable/ic_baseline_fingerprint_24"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:drawableTint="@color/custom_blue"
+                android:hint="Password"
+                android:paddingLeft="@dimen/hint_padding"
+                android:textSize="@dimen/edittext_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/editText_margin"
+                android:layout_marginEnd="@dimen/editText_margin"
+                android:text="Forgot password ?"
+                android:textSize="@dimen/textSize" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginStart="@dimen/editText_margin"
+                android:layout_marginTop="@dimen/editText_margin"
+                android:layout_marginEnd="@dimen/editText_margin"
+                android:background="@drawable/custom_buttom"
+                android:text="Login"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

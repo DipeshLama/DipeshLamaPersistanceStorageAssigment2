@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Ui.MainActivity">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:text="Logout"
+        android:textAllCaps="false"
+        android:textSize="@dimen/textSize"
+        android:textColor="@color/white"
+        android:background="@color/logout_btn"
+        android:layout_marginTop="@dimen/editText_margin"
+        android:layout_marginEnd="@dimen/editText_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnWriteToInternal"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="@dimen/editText_margin"
+        android:layout_marginEnd="@dimen/editText_margin"
+        android:background="@drawable/custom_buttom"
+        android:text="Write from internal file"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
