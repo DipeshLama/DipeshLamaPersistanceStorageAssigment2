@@ -16,17 +16,6 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initListener()
-
-//        button.setOnClickListener {
-//            val sharedPref = getSharedPreferences(PreferencesConstants.loginPreferences, MODE_PRIVATE)
-//            val editor = sharedPref.edit()
-//            editor.putString(PreferencesConstants.email,"")
-//            editor.putString(PreferencesConstants.password,"")
-//            editor.apply()
-//            startActivity(Intent(this, LoginActivity::class.java))
-//            finish()
-//        }
-
     }
 
     private fun initListener(){
@@ -45,6 +34,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
         }
     }
 
+    // Function to set shared preferences value to empty
     private fun logOut (){
         PreferenceUtils.saveToPreference(this,"","")
         startActivity(Intent(this, LoginActivity::class.java))

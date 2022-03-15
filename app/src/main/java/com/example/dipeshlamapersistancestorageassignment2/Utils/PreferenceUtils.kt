@@ -23,9 +23,4 @@ object PreferenceUtils {
     fun getPasswordFromPreferences (context: Context?) : String {
         return getPreferences(context)?.getString(PreferencesConstants.password,"")?: ""
     }
-
-//    fun checkBooleanFromPreferences (context: Context?) : Boolean{
-//        return getPreferences(context)?.getBoolean(PreferencesConstants.isLoggedIn,PreferencesConstants.checkLoggedIn!!)!!
-//    }
-
 }

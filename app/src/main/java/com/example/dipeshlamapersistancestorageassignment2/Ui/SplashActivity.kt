@@ -34,18 +34,4 @@ class SplashActivity : AppCompatActivity() {
             MainActivity()
         }
     }
-
-//    private fun checkLoggedIn() : Activity {
-//        val sharedPref =getSharedPreferences(PreferencesConstants.loginPreferences, MODE_PRIVATE)
-//        val email = sharedPref.getString(PreferencesConstants.email,"")
-//        val password = sharedPref.getString(PreferencesConstants.password,"")
-//        val bool = sharedPref.getBoolean(PreferencesConstants.isLoggedIn,)
-//
-//        if(email != ""  && password != ""){
-//            return MainActivity()
-//        }
-//        else{
-//            return LoginActivity()
-//        }
-//    }
 }

@@ -28,7 +28,7 @@
         android:layout_marginStart="@dimen/editText_margin"
         android:layout_marginEnd="@dimen/editText_margin"
         android:background="@drawable/custom_buttom"
-        android:text="Write from internal file"
+        android:text="Read Write From Internal File"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/textSize"

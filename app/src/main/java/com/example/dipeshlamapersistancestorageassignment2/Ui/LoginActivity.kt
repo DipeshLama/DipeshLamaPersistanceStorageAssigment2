@@ -24,25 +24,32 @@ class LoginActivity : AppCompatActivity(),View.OnClickListener {
         when (view){
             btnLogin ->{
                 savePreferences()
-                startActivity(Intent(this, MainActivity::class.java))
             }
         }
     }
 
     private fun savePreferences () {
-        val email = edtEmail.text.toString()
-        val password = edtPassword.text.toString()
-        PreferenceUtils.saveToPreference(this, email,password)
+        if(loginFormValidator()){
+            val email = edtEmail.text.toString()
+            val password = edtPassword.text.toString()
+            PreferenceUtils.saveToPreference(this, email,password)
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 
-//    private fun savePreferences () {
-//        val email = edtEmail.text.toString()
-//        val password = edtPassword.text.toString()
-//        val sharedPref = getSharedPreferences(PreferencesConstants.loginPreferences, MODE_PRIVATE)
-//        val editor= sharedPref.edit()
-//        editor.putString(PreferencesConstants.email,email)
-//        editor.putString(PreferencesConstants.password,password)
-//        editor.putBoolean(PreferencesConstants.isLoggedIn,true)
-//        editor.apply()
-//    }
+    private fun loginFormValidator () : Boolean{
+        when{
+            edtEmail.text.isEmpty()==true->{
+                edtEmail.error = "Please enter your email"
+                edtEmail.requestFocus()
+                return false
+            }
+            edtPassword.text.isEmpty()==true->{
+                edtPassword.error = "Please enter password"
+                edtPassword.requestFocus()
+                return false
+            }
+        }
+        return true
+    }
 }

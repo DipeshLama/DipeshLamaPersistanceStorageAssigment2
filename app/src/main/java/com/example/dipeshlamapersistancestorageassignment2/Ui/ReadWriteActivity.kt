@@ -1,10 +1,11 @@
 package com.example.dipeshlamapersistancestorageassignment2.Ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.dipeshlamapersistancestorageassignment2.R
+import com.example.dipeshlamapersistancestorageassignment2.Utils.ErrorConstants
 import kotlinx.android.synthetic.main.activity_read_write.*
 import java.io.*
 
@@ -18,6 +19,7 @@ class ReadWriteActivity : AppCompatActivity(),View.OnClickListener {
 
     private fun initListener(){
         btnWriteQuestions.setOnClickListener(this)
+        btnReadQuestions.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -25,55 +27,75 @@ class ReadWriteActivity : AppCompatActivity(),View.OnClickListener {
             btnWriteQuestions ->{
                 writeContentToFile()
             }
-        }
-    }
-
-    @Throws(FileNotFoundException:: class,IOException::class)
-    private fun writeToFile (sourceText : String){
-        val fileOutputStream: FileOutputStream = openFileOutput(FILE_NAME, MODE_PRIVATE)
-        val outputStreamWriter = OutputStreamWriter(fileOutputStream)
-        outputStreamWriter.write(sourceText)
-        outputStreamWriter.flush()
-        outputStreamWriter.close()
-    }
-
-    private fun writeContentToFile (){
-        val string : String = edtWriteQuestions.text.toString()
-        if(!checkEmpty(string)){
-            try {
-                writeToFile(string)
-            } catch (exception: java.lang.Exception){
-                Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_SHORT).show()
+            btnReadQuestions ->{
+                populateDataFromFile()
             }
         }
     }
 
-    private fun checkEmpty (string : String?) : Boolean {
-        return string.isNullOrEmpty() || string.isNullOrBlank()
+    private fun populateDataFromFile(){
+        try {
+            txtViewQuestions.text = readFromFile(FILE_NAME)
+            txtViewQuestions.visibility = View.VISIBLE
+        } catch (exception : Exception) {
+            Toast.makeText(applicationContext, ErrorConstants.exceptionError, Toast.LENGTH_SHORT).show()
+            txtViewQuestions.visibility = View.GONE
+        }
     }
 
+    @Throws(FileNotFoundException::class,IOException::class)
+    private fun readFromFile (filename :String) : String? {
+        var readString : String? = ""
+        val fileInputStream : FileInputStream = openFileInput(filename)
+        val inputStreamReader = InputStreamReader(fileInputStream)
+        val bufferedReader = BufferedReader(inputStreamReader)
+        val stringBuilder = StringBuilder(readString)
+        while (bufferedReader.readLine().also { readString = it } != null){
+            stringBuilder.append(readString)
+        }
+        inputStreamReader.close()
+        return stringBuilder.toString()
+    }
 
-//    private fun writeQuestions (){
-//        val sourceText = edtWriteQuestions.text.toString()
-//        if(isValid()){
-//            val fileOutputStream : FileOutputStream = openFileOutput(FILE_NAME, MODE_PRIVATE)
-//            val outputStreamWriter = OutputStreamWriter(fileOutputStream)
-//            outputStreamWriter.write(sourceText)
-//            outputStreamWriter.flush()
-//            outputStreamWriter.close()
-//        }
+    @Throws(FileNotFoundException:: class,IOException::class)
+    private fun writeToFile (file : File, sourceText : String) : File?{
+        val fileWriter = FileWriter(file, true)
+        fileWriter.write("$sourceText \n")
+        fileWriter.flush()
+        fileWriter.close()
+        return file
+    }
+
+    private fun writeContentToFile (){
+        val string : String = edtWriteQuestions.text.toString()
+        val dir = getFilesDir()
+        if(isValid()){
+            try {
+                writeToFile(File(dir,FILE_NAME),string)
+            } catch (exception: Exception){
+                Toast.makeText(applicationContext, ErrorConstants.exceptionError, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun isValid () : Boolean {
+        when{
+            edtWriteQuestions.text.isEmpty() == true ->{
+                edtWriteQuestions.error = "please enter the question"
+                edtWriteQuestions.requestFocus()
+                return false
+            }
+        }
+        return true
+    }
+
+    //    @Throws(FileNotFoundException:: class,IOException::class)
+//    private fun writeToFile (sourceText : String){
+//        val fileOutputStream: FileOutputStream = openFileOutput(FILE_NAME, MODE_PRIVATE)
+//        val outputStreamWriter = OutputStreamWriter(fileOutputStream)
+//        outputStreamWriter.write("$sourceText  \n")
+//        outputStreamWriter.flush()
+//        outputStreamWriter.close()
 //    }
 
-
-
-//    private fun isValid () : Boolean {
-//        when{
-//            edtWriteQuestions.text.isEmpty() == true ->{
-//                edtWriteQuestions.error = "please enter the question"
-//                edtWriteQuestions.requestFocus()
-//                return false
-//            }
-//        }
-//        return true
-//    }
 }
